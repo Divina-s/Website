@@ -1,0 +1,13 @@
+<h1>Delete Post </h1>
+
+{% if user.id == post.author.id %}
+<strong>Are you sure you want to delete "{{post.title}}"</strong>
+
+<div class="form-group">
+    <form method="Post">
+        {% csrf_token %}
+    </form>
+</div>
+<br>
+<button class="btn btn-secondary">Delete Post</button>
+{% endif %}
