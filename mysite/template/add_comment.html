@@ -3,13 +3,15 @@
 {% block content %}
 
 
-<h1>Add Comment.. </h1><br>
+<h1>Add Comment </h1><br><hr><br>
 <div class="form-group">
   <form method="Post">
     {% csrf_token %}
     {{form.as_p}}
-    <button class="btn btn-secondary">Add Comment</button>
+    <button class="btn btn-primary button">Add Comment</button>
   </form>
+
 </div>
+
 
 {% endblock %}

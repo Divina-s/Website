@@ -1,8 +1,7 @@
-
-
- {% extends 'base.html' %}
+  {% extends 'base.html' %}
   {% block content %} 
-  <form method="POST" class="from-group">
+  
+   <form method="POST" class="from-group">
     {% csrf_token %}
     <div class="Login-form">
         <form class="A1">
@@ -11,7 +10,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label for="Username">Username:</label>
-            <input type="Username" id='Username' name="username" class="form-control item" placeholder="Username" required>
+            <input type="Username" id='Username' name="username" class="form-control item " placeholder="Username" required>
         </div>
     </div>
     <div class="col-md-6">
@@ -20,8 +19,8 @@
             <input type="Password" id="cpass" name="password" class="form-control item" placeholder="Password" required>
         </div>
     </div>
-</div>
-    <button type="submit" class="btn btn-success">Login</button>
+</div><br>
+    <button type="submit" class="btn btn-primary button">Login</button><br><br>
     <p>Don't have an Account?</p>  <a href="{% url 'register' %}">Register</a></p>
   </form>
   {% endblock %}

@@ -11,66 +11,13 @@
     <title>Edit Profile</title>
 </head>
 <body>
+    <br>
+    <h5>Profile Settings</h5><br><br>
     <form action='' Method="POST">
-		{% csrf_token %}
-        <div class="registration-form">
-			<form class="A1">
-				<div class="registration-logo with-border">
-					<h1><b>Sign Up</b></h1>
-				</div><br>
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="Fname">Fname</label>
-							<input type="text" id="fname" name="fname" class="form-control item" placeholder="First name" required>
-						</div>
-					</div><br>
-					<div class="col-md-6>
-						<div class="form-group">
-							<label for="Lname">Lname</label>
-							<input type="text" id="lname" name="lname" class="form-control item" placeholder="Last name" required>
-						</div>
-					</div>
-				</div><br>
-				<div class="row">
-					<div class="col-sm-12">
-						<div>
-							<label for="Email">Email:</label>
-							<input type="email" id="email" name="email" class="form-control item" placeholder="Enter Email" required>
-						</div>
-					</div>
-				</div><br>
-				<div class="row">
-					<div class="col-sm-12">
-						<div>
-							<label for="Username"> Username:</label>
-							<input type="Username" id="Username" name="username" class="form-control item" placeholder="Enter Username" required>
-						</div>
-					</div>
-				</div><br>
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="password">Password:</label>
-							<input type="password" id="npass" name="pass" class="form-control item" placeholder="Password" required>
-						</div>
-					</div><br>
-				<div class="row">
-					<div class="col-md-6"></div>
-						<div class="form-group">
-							<label for="Age">Age:</label>
-							<input type="number" id="age" name="age" class="form-control item" placeholder="Age" required>
-						</div>
-					</div><br><br>
-                    
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button type="submit" name="submit" class="btn btn-block login-button">Edit</button>
-                        </div>
-                    </div><br>
-                    
-    </form>
-</body>
+	{% csrf_token %}
+        
+		{{form.as_p}}
+		<a href="{% url 'home' %}"><button class='btn btn-primary'>Update</button></a>
 </html>
 {% endblock %}
 

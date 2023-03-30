@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} {{post.title }}
+{% endblock %}
+
+{% block content %}
+
+
+
+{{post.body|safe}}
+<br>
+
+{% if user.id == post.author.id %}
+<button class="btn btn-primary button"><a href="{% url 'update_post' post.pk %}" class="text-white">Edit</a></button>
+<button class="btn btn-primary button"><a href="{% url 'delete_post' post.pk %}" class="text-white">Delete</a></button>
+{% endif %}
+
+<br><br>
+
+
+<hr>
+<br><br>
+
+
+<h2>Comments</h2>
+{% if not post.comments.all %}
+No comments Yet....<a href="{% url 'add_comment' post.pk %}">Add One</a>
+{% else %}
+<br><br>
+
+   {% for comment in post.comments.all %}
+<strong>
+{{comment.name}}-
+{{comment.date_added}}
+</strong>
+<br/>
+{{comment.body}}
+{% endfor %}
+{% endif %}
+<br><br>
+<a href="{% url 'add_comment' post.pk %}">Add Comment</a>
+
+<br><br><br>
+
+{% if post.author.profile.profile_pic %}
+      <img src="{{ post.author.profile.profile_pic.url }}"  width="50" height="50" class="img-fluid rounded-circle">
+{% else %}
+<img src="{% static 'blog/images/default_profile_pic.png' %}" class="img-fluid rounded-circle" >
+
+{% endif %}        
+ 
+    <br>
+          <h5><strong>Author:</strong>{{post.author}}</h5>
+        
+          <a href="{% url 'user_profile' post.author.profile.id %}">View Profile</a>
+        <br><br>
+         
+      
+
+<button class= "btn btn-primary button">
+  <a href="{% url 'home' %}" class="text-white">Back</a></button>
+
+
+
+
+{% endblock %}

@@ -4,20 +4,21 @@
 {% if category_posts %}
 <h1>{{ cats }} </h1>
 {% for post in category_posts %}
-<ul>
-<li><h3>{{post.title}}</h3>{{post.category}}
-    {{post.author}}<br>
-    {{post.status}} 
-    <br>
-    {{post.body|slice:":300"}}<br>
-    <a href="{% url 'article_detail' post.pk %}">Read More</a><br>
-     <small><a href="{% url 'update_post' post.pk %}">Edit</a>  <a href="{% url 'delete_post'  post.pk %}">Delete</a></small>
-   
 
-    </li>
-</ul>
+    <div class="card" style="width:300px; height: 30em;">
+        <img class="card-img-top" src="{{post.Image.url}} ">
+        <div class="card-body">
+          <h5 class="card-title"><a href="">{{post.title}}</a></h5>
+          <p class="card-text"><br>{{post.article_snippet}}</p><br><br>
+          <a href="{% url 'post_detail' post.pk %}" class="btn btn-primary">Read More</a>
+        </div>
+       </div>
+         
+      
+      
+    
 {% endfor %}
 {% else %}
-<h2> Sorry this page does not exist</h2>
+<h2> Sorry this page does not exist!</h2>
 {% endif %}
 {% endblock %}

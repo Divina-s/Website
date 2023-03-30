@@ -1,24 +1,27 @@
 {% extends 'base.html' %}
+{% block title %}Blog{% endblock %}
 {% block content %}
+{% for msg in message %}
+  {{msg}}
+  {% endfor %}
 
 
-<h1> Posts </h1>
 {% for post in object_list %}
-<ul>
-
-   <li><h3>{{post.title}}</h3>
-    <small><a href="{% url 'category' post.category|slugify %}">{{post.category}}</a></small><br>
-    Author:{{post.author}}
-    <br>
-    {{post.article_snippet}}<br><br>
-    <a href="{% url 'article_detail' post.pk %}">Read More</a><br>
-    {% if user.id == post.author.id %}
-    <small><a href="{% url 'update_post' post.pk %}">Edit</a>  <a href="{% url 'delete_post'  post.pk %}">Delete</a></small>
-    {% endif %}
-   
-
-    </li>
+  
+   <div class="card" style="width:300px; height: 40em;">
+    <img class="card-img-top" src="{{post.Image.url}} ">
+    <div class="card-body">
+      <h5 class="card-title"><a href="">{{post.title}}</a></h5>
+      <p class="card-text"><a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a><br>{{post.article_snippet}}</p>
+      <a href="{% url 'post_detail' post.pk %}" class="btn btn-primary">Read More</a>
+    </div>
+   </div>
+     
+  
+  
+    
 </ul>
 {% endfor %}
+
 
 {% endblock %}
